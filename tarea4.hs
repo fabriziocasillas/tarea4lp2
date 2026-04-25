@@ -10,7 +10,10 @@ sumLin :: Int %1 -> Int -> Int
 sumLin = unsafeCoerce (+)
 
 prestarPrimero :: (a , b) %1 -> (a , a %1 -> (a , b))
-prestarPrimero (x , y) = (x, \x' -> (x', y))
+prestarPrimero (x , y) = (x, \a -> (a, y))
+
+prestarAmbos :: (a , b ) %1 -> (a , b , a %1 -> b %1 -> (a , b ) )
+prestarAmbos (x , y ) = ()
 
 mutarTupla :: (Int , Int) %1 -> (Int , Int)
 mutarTupla tupla =
