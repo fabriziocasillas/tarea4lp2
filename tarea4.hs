@@ -26,3 +26,12 @@ mutarAmbos tupla =
   case prestarAmbos tupla of
     (x, y, devolucion) ->
       devolucion (sumLin x 1) (sumLin y 2)
+
+prestarAmbosInseguro :: (a , b) -> (a , b , a -> b -> (a , b))
+prestarAmbosInseguro (x , y) = (x, y, \_ _ -> (x, y))
+
+mutarAmbosInseguro :: ( Int , Int ) -> ( Int , Int )
+mutarAmbosInseguro tupla =
+  case prestarAmbosInseguro tupla of
+    (x , y , devolucion ) ->
+      devolucion ( sumLin x 1) ( sumLin y 2)
